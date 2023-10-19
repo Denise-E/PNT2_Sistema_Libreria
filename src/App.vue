@@ -1,27 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import HomeViewVue from './views/HomeView.vue'
+import Header from './components/Header.vue'
+import {IonApp,IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
 </script>
 
 <template>
-  <header>
 
-    <div class="wrapper">
+    <ion-app class="wrapper">
+      <Header />
+      <HomeViewVue />
+    </ion-app>
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <!-- Resto de links al loguearse -->
-      </nav>
-      <nav>
-        <RouterLink to="/login">Log in</RouterLink>
-        <RouterLink to="/register">Register</RouterLink>
-        <!-- Hipervinculo log out al loguearse -->
-      </nav>
-      <RouterView />
-    </div>
-  </header>
-
-  
-  
 </template>
 
 <style scoped>
