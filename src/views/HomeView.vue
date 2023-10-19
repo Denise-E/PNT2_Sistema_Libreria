@@ -31,8 +31,8 @@ export default {
 <template>
     
   <ion-page>
+    
     <ion-content>
-
         <h2>Nuestros libros</h2>
 
         <div v-if="isError">
