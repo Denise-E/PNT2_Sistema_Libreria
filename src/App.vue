@@ -1,6 +1,5 @@
 <script setup>
 import HomeViewVue from './views/HomeView.vue'
-import Header from './components/Header.vue'
 </script>
 
 <template>

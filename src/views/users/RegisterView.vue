@@ -1,4 +1,4 @@
-script>
+<script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
 import booksService from '../service/booksService'
 
