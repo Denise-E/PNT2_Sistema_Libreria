@@ -12,7 +12,7 @@ export default {
     }
   },
   methods: {
-    async addBook() { // Avisar si ya existe
+    async addBook() {
       try {
         await booksService.saveData(this.book)
       } catch(e) {

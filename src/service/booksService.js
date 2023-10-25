@@ -26,16 +26,18 @@ export default {
             throw "Error de conexion"
         }
     },
-    async deleteData(id) {
+    async deleteBook(id) {
         try {
-            await apiClient.delete("/" + id)
+            await apiClient.delete("/"+id)
         } catch (error) {
             throw "Error de conexion"
         }
     },
-    async putData(id, elem) {
+    async updateBook(id, elem) {
         try {
-            await apiClient.put("/" + id, elem)
+            console.log(id, elem)
+            const numId = parseInt(id)
+            return await apiClient.put("/"+numId, elem)
         } catch (error) {
             throw "Error de conexion"
         }

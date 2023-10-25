@@ -21,19 +21,9 @@ const router = createRouter({
     },
     // Books routes
     {
-      path: '/books', // Con botón para borrar
-      name: 'books_list',
-      component: () => import('../views/books/BooksListView.vue')
-    },
-    {
       path: '/books/add',
       name: 'book_add',
       component: () => import('../views/books/BookAddView.vue')
-    },
-    {
-      path: '/books/edit/:id', 
-      name: 'book_edit',
-      component: () => import('../views/books/BookEditView.vue')
     },
     // Reservations 
     {
