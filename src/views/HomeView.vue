@@ -42,7 +42,6 @@ export default {
        this.editar = true
     },
     async saveChanges(id){
-      //window.location.reload(true);
       await booksService.updateBook(id, this.book) 
       this.loadData()
       this.editar = false
