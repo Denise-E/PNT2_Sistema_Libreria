@@ -1,26 +1,28 @@
 <script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
-import booksService from '../service/booksService'
+import usersService from '../../service/usersService'
 
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
     return {
-        lista: [],
+        user: {},
         isError: false,
         errorMessage: ''
     }
   },
-  mounted() {
-    this.loadData()
-  },
   methods: {
-    async loadData() {
+    async addUser() {
       try {
-        this.lista = await booksService.loadData()
+        await usersService.saveData(this.user)
+        this.$router.push({ path: '/' }).catch(err => {});
+
+        setTimeout(() => {
+            this.$router.go(0);
+        }, 1);
+
       } catch(e) {
-        this.isError = true;
-        this.errorMessage = "No se pueden cargar los datos en este momento"
+        this.errorMessage = e
       }
     }
 
@@ -33,18 +35,12 @@ export default {
   <ion-page>
     <ion-content>
 
-        <h2>Nuevo Libro:</h2>
+        <h2>Bienvenido! Registrate: </h2>
 
-        <div v-if="isError">
-            {{ errorMessage }}
-        </div>
-
-        <ion-list v-for="e in lista" :key="e.id">
-            <article>
-                <h1>{{ e.title }}</h1>
-                <h4>{{e.author}}</h4>
-            </article>
-        </ion-list>
+        <ion-input v-model="user.name" label='nombre' type='text'></ion-input>
+        <ion-input v-model="user.email" label='email' type='text'></ion-input>
+        <ion-input v-model="user.password" label='password' type='text'></ion-input>
+        <ion-button @click="addUser()">Registrate</ion-button>
 
     </ion-content>
   </ion-page>

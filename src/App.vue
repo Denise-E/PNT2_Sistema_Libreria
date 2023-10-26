@@ -11,6 +11,10 @@ import HomeViewVue from './views/HomeView.vue'
             <!-- Resto de links al loguearse -->
             <RouterLink to="/login">Log in</RouterLink>
             <RouterLink to="/register">Register</RouterLink>
+
+
+            <RouterLink to="/users">Usuarios</RouterLink>
+
             <!-- Hipervinculo log out al loguearse -->
       </ion-header>
       <HomeViewVue />

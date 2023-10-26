@@ -15,7 +15,12 @@ const router = createRouter({
       component: () => import('../views/users/RegisterView.vue')
     },
     {
-      path: '/user/edit/:id', // Con botón para borrar perfil
+      path: '/users', 
+      name: 'users',
+      component: () => import('../views/users/UsersListView.vue')
+    },
+    {
+      path: '/user/edit/:id',
       name: 'edit',
       component: () => import('../views/users/EditUserView.vue')
     },

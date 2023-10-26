@@ -7,3 +7,6 @@ https://653062896c756603295e947b.mockapi.io/api/books
 Pendientes:
 
 * Completar info en forms de edicion
+* CSS
+* Agregar validaciones para visualizar o no datos y/o hipervinculos header
+* Ajustar redirecciones en edición de usuario
