@@ -8,5 +8,8 @@ Pendientes:
 
 * Completar info en forms de edicion
 * CSS
-* Agregar validaciones para visualizar o no datos y/o hipervinculos header
+* Agregar validaciones para visualizar o no datos y/o hipervinculos header (session)
 * Ajustar redirecciones en edición de usuario
+* CURD reservaciones 
+* Log out
+* mensaje con nombre al loguearse
