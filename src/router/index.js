@@ -37,12 +37,17 @@ const router = createRouter({
       component: () => import('../views/reservations/ReservationsListView.vue')
     },
     {
-      path: '/reservations/add',
+      path: '/reservations/add/:book_id',
       name: 'reservations_add',
       component: () => import('../views/reservations/ReservationsAddView.vue')
     },
     {
-      path: '/reservations/edit/:id', // Con botón para borrar
+      path: '/reservations/edit/:id', 
+      name: 'reservations_edit',
+      component: () => import('../views/reservations/ReservationsEditView.vue')
+    },
+    {
+      path: '/reservations/:user_id', 
       name: 'reservations_edit',
       component: () => import('../views/reservations/ReservationsEditView.vue')
     }

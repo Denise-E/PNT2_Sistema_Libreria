@@ -1,6 +1,6 @@
 import axios from 'axios'
 const apiClient = axios.create({
-    baseURL: 'https://653062896c756603295e947b.mockapi.io/api/books',
+    baseURL: 'https://65272ff5917d673fd76d7cfd.mockapi.io/api/reservations',
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -26,29 +26,18 @@ export default {
             throw "Error de conexion"
         }
     },
-    async deleteBook(id) {
+    async deleteReservation(id) {
         try {
             await apiClient.delete("/"+id)
         } catch (error) {
             throw "Error de conexion"
         }
     },
-    async updateBook(id, elem) {
+    async updateReservation(elem) {
         try {
-            console.log(id, elem)
-            const numId = parseInt(id)
+            //console.log(id, elem)
+            const numId = parseInt(elem.id)
             return await apiClient.put("/"+numId, elem)
-        } catch (error) {
-            throw "Error de conexion"
-        }
-    },
-
-    async getBookById(id) {
-        try {
-            
-            const response = await apiClient.get('/'+id);
-            console.log(response)
-            return response.data
         } catch (error) {
             throw "Error de conexion"
         }

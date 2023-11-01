@@ -6,10 +6,13 @@ https://653062896c756603295e947b.mockapi.io/api/books
 
 Pendientes:
 
-* Completar info en forms de edicion
+* Completar info en forms de edicion ()
 * CSS
 * Agregar validaciones para visualizar o no datos y/o hipervinculos header (session)
 * Ajustar redirecciones en edición de usuario
-* CURD reservaciones 
 * Log out
 * mensaje con nombre al loguearse
+* Mostrar datos concretos de las reservas
+* Mostrar campos de agregar reserva segun usuario
+* Al crear reserva validar que exista usuario si lo esta creando un admin, y ajustar 
+campos a mostrar

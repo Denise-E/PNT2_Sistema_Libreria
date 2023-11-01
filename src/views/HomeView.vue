@@ -46,6 +46,9 @@ export default {
       this.loadData()
       this.editar = false
       this.book = {} 
+    },
+    reservationPage(id){
+      this.$router.push({ path: `/reservations/add/${id}` })
     }
 
   }
@@ -79,6 +82,9 @@ export default {
               <article>
                   <h1>{{ e.title }}</h1>
                   <h4>{{e.author}}</h4>
+
+                  <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
+
                   <ion-button v-on:click="editBook(e.id)">Editar</ion-button>
                   <ion-button v-on:click="deleteBook(e.id)">Borrar</ion-button>
               </article>
