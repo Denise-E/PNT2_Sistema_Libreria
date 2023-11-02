@@ -20,22 +20,47 @@ export default {
     },
     async saveData(elem) {
         try {
-            
+            elem.avalaible_quantity = parseInt(elem.avalaible_quantity)
             await apiClient.post('/', elem);
         } catch (error) {
             throw "Error de conexion"
         }
     },
-    async deleteData(id) {
+    async deleteBook(id) {
         try {
-            await apiClient.delete("/" + id)
+            await apiClient.delete("/"+id)
         } catch (error) {
             throw "Error de conexion"
         }
     },
-    async putData(id, elem) {
+    async updateBook(id, elem) {
         try {
-            await apiClient.put("/" + id, elem)
+            console.log(id, elem)
+            const numId = parseInt(id)
+            return await apiClient.put("/"+numId, elem)
+        } catch (error) {
+            throw "Error de conexion"
+        }
+    },
+
+    async getBookById(id) {
+        try {
+            
+            const response = await apiClient.get('/'+id);
+            console.log(response)
+            return response.data
+        } catch (error) {
+            throw "Error de conexion"
+        }
+    },
+    async updateBookAvailability(id) {
+        try {
+            
+            const response = await apiClient.get('/'+id);
+            response.data.avalaible_quantity = response.data.avalaible_quantity -1
+            
+            this.updateBook(id, response.data)
+
         } catch (error) {
             throw "Error de conexion"
         }

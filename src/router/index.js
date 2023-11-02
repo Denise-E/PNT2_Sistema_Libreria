@@ -15,25 +15,20 @@ const router = createRouter({
       component: () => import('../views/users/RegisterView.vue')
     },
     {
-      path: '/user/edit/:id', // Con botón para borrar perfil
+      path: '/users', 
+      name: 'users',
+      component: () => import('../views/users/UsersListView.vue')
+    },
+    {
+      path: '/user/edit/:id',
       name: 'edit',
       component: () => import('../views/users/EditUserView.vue')
     },
     // Books routes
     {
-      path: '/books', // Con botón para borrar
-      name: 'books_list',
-      component: () => import('../views/books/BooksListView.vue')
-    },
-    {
       path: '/books/add',
       name: 'book_add',
       component: () => import('../views/books/BookAddView.vue')
-    },
-    {
-      path: '/books/edit/:id', 
-      name: 'book_edit',
-      component: () => import('../views/books/BookEditView.vue')
     },
     // Reservations 
     {
@@ -42,14 +37,19 @@ const router = createRouter({
       component: () => import('../views/reservations/ReservationsListView.vue')
     },
     {
-      path: '/reservations/add',
+      path: '/reservations/add/:book_id',
       name: 'reservations_add',
       component: () => import('../views/reservations/ReservationsAddView.vue')
     },
     {
-      path: '/reservations/edit/:id', // Con botón para borrar
+      path: '/reservations/edit/:id', 
       name: 'reservations_edit',
       component: () => import('../views/reservations/ReservationsEditView.vue')
+    },
+    {
+      path: '/reservations/:user_id', 
+      name: 'reservations_userView',
+      component: () => import('../views/reservations/ReservationsUserView.vue')
     }
   ]
 })

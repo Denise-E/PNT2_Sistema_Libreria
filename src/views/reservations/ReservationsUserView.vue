@@ -1,20 +1,26 @@
 <script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
-import usersService from '../../service/usersService'
+import reservationsService from '../../service/reservationsService'
 
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
     return {
-        user: {},
+        reservation: {},
         isError: false,
-        errorMessage: ''
+        errorMessage: '',
+        book: {}
     }
   },
+  mounted(){
+    this.getBook()
+  },
   methods: {
-    async addUser() {
+    async addReservation() {
       try {
-        await usersService.saveData(this.user)
+        
+
+        await reservationsService.saveData(this.reservation)
         this.$router.push({ path: '/' }).catch(err => {});
 
         setTimeout(() => {
@@ -24,6 +30,11 @@ export default {
       } catch(e) {
         this.errorMessage = e
       }
+    },
+
+    async getBook() {
+        const id = parseInt(this.$route.params.book_id)
+        this.book = await booksService.getBookById(id)
     }
 
   }
@@ -31,17 +42,10 @@ export default {
 </script>
 
 <template>
+    <ion-page>
     
-  <ion-page>
     <ion-content>
-
-        <h2>Bienvenido! Registrate: </h2>
-
-        <ion-input v-model="user.name" label='nombre' type='text'></ion-input>
-        <ion-input v-model="user.email" label='email' type='text'></ion-input>
-        <ion-input v-model="user.password" label='password' type='text'></ion-input>
-        <ion-button @click="addUser()">Registrate</ion-button>
-
+        <h1>HOLA</h1>
     </ion-content>
   </ion-page>
 </template>

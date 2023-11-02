@@ -12,9 +12,15 @@ export default {
     }
   },
   methods: {
-    async addBook() { // Avisar si ya existe
+    async addBook() {
       try {
         await booksService.saveData(this.book)
+        this.$router.push({ path: '/' }).catch(err => {});
+
+        setTimeout(() => {
+        this.$router.go(0);
+      }, 1);
+
       } catch(e) {
         this.errorMessage = e
       }
@@ -34,7 +40,7 @@ export default {
         <ion-input v-model="book.title" label='title' type='text'></ion-input>
         <ion-input v-model="book.author" label='author' type='text'></ion-input>
         <ion-input v-model="book.avalaible_quantity" label='quantity' type='number'></ion-input>
-        <ion-button @click="addBook">Agregar</ion-button>
+        <ion-button @click="addBook()">Agregar</ion-button>
 
     </ion-content>
   </ion-page>

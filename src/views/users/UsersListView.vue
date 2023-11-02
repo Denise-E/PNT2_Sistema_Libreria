@@ -1,16 +1,14 @@
 <script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
-import reservationsService from '../../service/reservationsService'
+import usersService from '../../service/usersService'
 
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
     return {
-        lista: [],
+        users: [],
         isError: false,
         errorMessage: '',
-        editar: false,
-        reservation: {}
     }
   },
   async mounted(){
@@ -18,27 +16,24 @@ export default {
   },
   methods: {
     async loadData() {
-      
       try {
-        this.lista = await reservationsService.loadData()
+        this.users = await usersService.loadData()
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"
       }
     },
-    async deleteReservation(id) {
+    async deleteUser(id) { 
       try {
-        await reservationsService.deleteReservation(id)
+        await usersService.deleteUser(id)
         await this.loadData()
       } catch(e) {
         this.errorMessage = `Error al borrar ${e}`
       }
     },
-
-    editReservation(id){
-        this.$router.push('/reservations/edit/'+id)
+    editUser(id){
+        this.$router.push('/user/edit/'+id)
     }
-
   }
 }
 </script>
@@ -49,20 +44,22 @@ export default {
     
     <ion-content>
 
-          <h2>Reservas: </h2>
+          <h2>Usuarios</h2>
 
           <div v-if="isError">
               {{ errorMessage }}
           </div>
 
-          <ion-list v-for="e in lista" :key="e.id">
+          <ion-list v-for="e in users" :key="e.id">
               <article>
-                  <h1>{{ e.id_client }}</h1>
-                  <h4>{{e.id_book}}</h4>
-                  <ion-button v-on:click="editReservation(e.id)">Editar</ion-button>
-                  <ion-button v-on:click="deleteReservation(e.id)">Borrar</ion-button>
+                  <h1>{{ e.name }}</h1>
+                  <h4>{{e.email}}</h4>
+                  
+                  <ion-button v-on:click="editUser(e.id)">Editar</ion-button>
+                  <ion-button v-on:click="deleteUser(e.id)">Borrar</ion-button>
               </article>
           </ion-list>
+
 
     </ion-content>
   </ion-page>

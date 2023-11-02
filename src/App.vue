@@ -1,17 +1,37 @@
 <script setup>
 import HomeViewVue from './views/HomeView.vue'
+
+const user_admin = localStorage.getItem("user_admin")
+const user_id = localStorage.getItem("user_id")
+const user_name = localStorage.getItem("user_name")
+
 </script>
 
 <template>
 
     <ion-app class="wrapper">
-      <ion-header>
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/books/add">Agregar Libro</RouterLink>
-            <!-- Resto de links al loguearse -->
-            <RouterLink to="/login">Log in</RouterLink>
-            <RouterLink to="/register">Register</RouterLink>
-            <!-- Hipervinculo log out al loguearse -->
+      <ion-header>            
+
+            <div v-if="user_admin == null">
+              <RouterLink to="/">Home</RouterLink>
+              <RouterLink to="/login">Log in</RouterLink>
+              <RouterLink to="/register">Register</RouterLink>
+            </div>
+
+            <div v-if="user_admin == 'true'">
+              <!-- Logout -->
+              <RouterLink to="/">Home</RouterLink>
+              <RouterLink to="/books/add">Agregar Libro</RouterLink>
+              <RouterLink to="/reservations">Reservaciones</RouterLink>
+              <RouterLink to="/users">Usuarios</RouterLink>
+            </div>
+
+            <div v-if="user_admin == 'false'">
+              <RouterLink to="/">Home</RouterLink>
+              <RouterLink :to="'/reservations/'+user_id">Mis Reservas</RouterLink>
+              <!-- Logout, UserEdit (nombre), CrearReservasUser -->
+            </div>
+
       </ion-header>
       <HomeViewVue />
       <RouterView />
