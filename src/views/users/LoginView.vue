@@ -17,6 +17,12 @@ export default {
         const rdo = await usersService.login(this.user)
 
         if(rdo){
+            localStorage.setItem("user_id", rdo.id);
+            localStorage.setItem("user_admin", rdo.admin);
+            localStorage.setItem("user_name", rdo.name);
+
+  
+            
             this.$router.push({ path: '/' }).catch(err => {});
 
             setTimeout(() => {

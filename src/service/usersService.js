@@ -32,14 +32,15 @@ export default {
     },
 
     async login(user){
-        let userfound = false;
+        let userfound = undefined;
+        
         const users = await apiClient.get('/');
 
         const user_by_email = users.data.find(u => user.email == u.email)
 
         if(user_by_email){ // Sino undefined ?
             if(user_by_email.password == user.password){
-                userfound = true;
+                userfound = user_by_email;
             }
         }
 

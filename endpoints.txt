@@ -6,13 +6,10 @@ https://653062896c756603295e947b.mockapi.io/api/books
 
 Pendientes:
 
-* Completar info en forms de edicion ()
+
 * CSS
-* Agregar validaciones para visualizar o no datos y/o hipervinculos header (session)
-* Ajustar redirecciones en edición de usuario
-* Log out
-* mensaje con nombre al loguearse
-* Mostrar datos concretos de las reservas
-* Mostrar campos de agregar reserva segun usuario
-* Al crear reserva validar que exista usuario si lo esta creando un admin, y ajustar 
-campos a mostrar
+* Mostrar datos concretos de las reservas (no ids)
+* VALIDAR TODOS LOS POST Y PUT (campos necesarios)
+
+* Al agregar reserva desconatr en 1 la cantidad + test en todos los users
+* Agregar endpoints restantes en App.vue

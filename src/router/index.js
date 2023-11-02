@@ -48,8 +48,8 @@ const router = createRouter({
     },
     {
       path: '/reservations/:user_id', 
-      name: 'reservations_edit',
-      component: () => import('../views/reservations/ReservationsEditView.vue')
+      name: 'reservations_userView',
+      component: () => import('../views/reservations/ReservationsUserView.vue')
     }
   ]
 })

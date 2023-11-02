@@ -10,17 +10,21 @@ export default {
         isError: false,
         errorMessage: '',
         editar: false,
-        book: {}
+        book: {},
+        isAdmin: false,
+        userId: 0,
     }
   },
   async mounted(){
-    await this.loadData()
+    await this.loadData(),
+    this.logedUser()
   },
   methods: {
     async loadData() {
       
       try {
-        this.lista = await booksService.loadData()
+        const listado  = await booksService.loadData()
+        this.lista = listado.filter(i => i.avalaible_quantity > 0)
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"
@@ -49,6 +53,10 @@ export default {
     },
     reservationPage(id){
       this.$router.push({ path: `/reservations/add/${id}` })
+    },
+    logedUser(){
+      this.isAdmin = localStorage.getItem("user_admin")
+      this.userId = localStorage.getItem("user_id")
     }
 
   }
@@ -72,7 +80,7 @@ export default {
       </div>
 
       <div v-else>
-          <h2>Nuestros libros</h2>
+          <h2>Nuestros libros disponibles</h2>
 
           <div v-if="isError">
               {{ errorMessage }}
@@ -83,10 +91,19 @@ export default {
                   <h1>{{ e.title }}</h1>
                   <h4>{{e.author}}</h4>
 
-                  <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
 
-                  <ion-button v-on:click="editBook(e.id)">Editar</ion-button>
-                  <ion-button v-on:click="deleteBook(e.id)">Borrar</ion-button>
+                  <div v-if="isAdmin == 'true'">
+                    <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
+
+                    <ion-button v-on:click="editBook(e.id)">Editar</ion-button>
+                    <ion-button v-on:click="deleteBook(e.id)">Borrar</ion-button>
+                  </div>
+
+                  <div v-if="isAdmin == 'false'">
+                      <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
+                  </div>
+                  
+
               </article>
           </ion-list>
         </div>

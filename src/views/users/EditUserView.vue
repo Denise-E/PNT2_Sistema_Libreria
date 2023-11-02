@@ -25,7 +25,7 @@ export default {
       const result = await usersService.updateUser(this.user) 
 
       if(result){ // Validar segun usuario
-        this.$router.push({ path: '/' }).catch(err => {});
+        this.$router.push({ path: '/users' }).catch(err => {});
 
         // Reload the page after a short delay (adjust as needed)
         setTimeout(() => {
