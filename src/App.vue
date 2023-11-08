@@ -1,6 +1,7 @@
 <script setup>
 import HomeViewVue from './views/HomeView.vue'
 
+
 const user_admin = localStorage.getItem("user_admin")
 const user_id = localStorage.getItem("user_id")
 const user_name = localStorage.getItem("user_name")
@@ -13,23 +14,26 @@ const user_name = localStorage.getItem("user_name")
       <ion-header>            
 
             <div v-if="user_admin == null">
-              <RouterLink to="/">Home</RouterLink>
-              <RouterLink to="/login">Log in</RouterLink>
-              <RouterLink to="/register">Register</RouterLink>
+              <RouterLink to="/">Home | </RouterLink>
+              <RouterLink to="/login">Log in | </RouterLink>
+              <RouterLink to="/register">Register | </RouterLink>
             </div>
 
             <div v-if="user_admin == 'true'">
               <!-- Logout -->
-              <RouterLink to="/">Home</RouterLink>
-              <RouterLink to="/books/add">Agregar Libro</RouterLink>
-              <RouterLink to="/reservations">Reservaciones</RouterLink>
-              <RouterLink to="/users">Usuarios</RouterLink>
+              <RouterLink to="/">Home | </RouterLink>
+              <RouterLink to="/books/add">Agregar Libro | </RouterLink>
+              <RouterLink to="/reservations">Reservaciones | </RouterLink>
+              <RouterLink to="/users">Usuarios | </RouterLink>
+              <RouterLink to="/logout">Logout | </RouterLink>
             </div>
 
             <div v-if="user_admin == 'false'">
-              <RouterLink to="/">Home</RouterLink>
-              <RouterLink :to="'/reservations/'+user_id">Mis Reservas</RouterLink>
-              <!-- Logout, UserEdit (nombre), CrearReservasUser -->
+              <RouterLink to="/">Home | </RouterLink>
+              <RouterLink :to="'/reservations/'+user_id">Mis Reservas | </RouterLink>
+              <RouterLink :to="'/users/edit'+user_id">Mis Reservas | </RouterLink>
+              <RouterLink to="/logout">Logout | </RouterLink>
+              <!-- Logout-->
             </div>
 
       </ion-header>

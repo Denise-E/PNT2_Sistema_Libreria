@@ -10,6 +10,11 @@ const router = createRouter({
       component: () => import('../views/users/LoginView.vue')
     },
     {
+      path: '/logout',
+      name: 'logout',
+      component: () => import('../views/users/LogOutView.vue')
+    },
+    {
       path: '/register',
       name: 'register',
       component: () => import('../views/users/RegisterView.vue')
@@ -51,6 +56,14 @@ const router = createRouter({
       name: 'reservations_userView',
       component: () => import('../views/reservations/ReservationsUserView.vue')
     }
+    
+
+
+
+
+    // <!-- Logout, UserEdit (nombre), CrearReservasUser -->
+
+
   ]
 })
 

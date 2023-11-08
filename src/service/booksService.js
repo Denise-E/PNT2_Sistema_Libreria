@@ -8,11 +8,15 @@ const apiClient = axios.create({
 })
 
 export default {
-    async loadData() {
+    async loadData(id) {
+        let response = ''
         try {
+            if(id){
+                response = await apiClient.get('/'+id);
+            }else{
+                response = await apiClient.get('/');
+            }
             
-            const response = await apiClient.get('/');
-
             return response.data
         } catch (error) {
             throw "Error de conexion"

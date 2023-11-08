@@ -2,6 +2,7 @@
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
 import reservationsService from '../../service/reservationsService'
 
+
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
@@ -21,6 +22,7 @@ export default {
       
       try {
         this.lista = await reservationsService.loadData()
+        
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"
@@ -47,7 +49,7 @@ export default {
     
   <ion-page>
     
-    <ion-content>
+    <ion-content class="ion-text-center">
 
           <h2>Reservas: </h2>
 
@@ -55,15 +57,49 @@ export default {
               {{ errorMessage }}
           </div>
 
-          <ion-list v-for="e in lista" :key="e.id">
-              <article>
-                  <h1>{{ e.id_client }}</h1>
-                  <h4>{{e.id_book}}</h4>
-                  <ion-button v-on:click="editReservation(e.id)">Editar</ion-button>
-                  <ion-button v-on:click="deleteReservation(e.id)">Borrar</ion-button>
-              </article>
-          </ion-list>
+          <ion-list>
+            
+            <ion-item> 
+              <ion-grid>
+                <ion-row class="headers">
+                  
+                  <ion-col>Cliente Name</ion-col> 
+                  <ion-col>Book Name</ion-col> 
+                  <ion-col>Actions</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <ion-item v-for="e in lista" :key="e.id">
+              <ion-grid>
+                <ion-row class="content">
+                  <ion-col>{{ e.id_client }}</ion-col>
+                  <ion-col>{{ e.id_book }}</ion-col>
+                  <ion-col>
+                    <ion-button v-on:click="editReservation(e.id)">Editar</ion-button>
+                    <ion-button v-on:click="deleteReservation(e.id)">Borrar</ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          
+      </ion-list>
 
     </ion-content>
   </ion-page>
 </template>
+
+<style>
+
+.headers{
+  font-size: large;
+  font-weight: 600;
+  text-align: center;
+}
+
+.content{
+  text-align: center;
+}
+
+
+</style>

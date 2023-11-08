@@ -68,7 +68,7 @@ export default {
     
   <ion-page>
     
-    <ion-content>
+    <ion-content class="ion-text-center">
 
       <div v-if="editar">
            <h2>Editar libro</h2>
@@ -87,29 +87,59 @@ export default {
               {{ errorMessage }}
           </div>
 
-          <ion-list v-for="e in lista" :key="e.id">
-              <article>
-                  <h1>{{ e.title }}</h1>
-                  <h4>{{e.author}}</h4>
+          
+          <ion-list>
+            
+              <ion-item> 
+                <ion-grid>
+                  <ion-row class="headers">
+                    <ion-col>Ttile</ion-col> 
+                    <ion-col>Author</ion-col> 
+                    <ion-col>Actions</ion-col> 
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
 
-
-                  <div v-if="isAdmin == 'true'">
-                    <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
-
-                    <ion-button v-on:click="editBook(e.id)">Editar</ion-button>
-                    <ion-button v-on:click="deleteBook(e.id)">Borrar</ion-button>
-                  </div>
-
-                  <div v-if="isAdmin == 'false'">
-                      <ion-button v-on:click="reservationPage(e.id)">Reservar</ion-button>
-                  </div>
-                  
-
-              </article>
-          </ion-list>
+              <ion-item v-for="e in lista" :key="e.id">
+                <ion-grid>
+                  <ion-row class="content">
+                    <ion-col>{{ e.title }}</ion-col>
+                    <ion-col>{{ e.author }}</ion-col>
+                    <ion-col>
+                      <div v-if="isAdmin == 'true'">
+                        <ion-button @click="reservationPage(e.id)">Reservar</ion-button>
+                        <ion-button @click="editBook(e.id)">Editar</ion-button>
+                        <ion-button @click="deleteBook(e.id)">Borrar</ion-button>
+                      </div>
+                      <div v-if="isAdmin == 'false'">
+                        <ion-button @click="reservationPage(e.id)">Reservar</ion-button>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            
+        </ion-list>
         </div>
 
 
     </ion-content>
   </ion-page>
 </template>
+
+<style>
+
+.headers{
+  font-size: large;
+  font-weight: 600;
+  text-align: center;
+}
+
+.content{
+  text-align: center;
+}
+
+
+
+
+</style>
