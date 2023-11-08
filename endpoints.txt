@@ -8,6 +8,4 @@ Pendientes:
 
 
 * CSS
-* Mostrar datos concretos de las reservas (no ids)
 * VALIDAR TODOS LOS POST Y PUT (campos necesarios)
-* Agregar endpoints restantes en App.vue (logout es un path o un boton que borra los datos que tenemos en el localstorage?)

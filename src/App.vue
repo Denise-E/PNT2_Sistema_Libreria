@@ -6,6 +6,12 @@ const user_admin = localStorage.getItem("user_admin")
 const user_id = localStorage.getItem("user_id")
 const user_name = localStorage.getItem("user_name")
 
+function logout(){
+  localStorage.clear();
+  //this.$router.push({ path: '/login' })
+  window.location.reload();
+}
+
 </script>
 
 <template>
@@ -20,20 +26,18 @@ const user_name = localStorage.getItem("user_name")
             </div>
 
             <div v-if="user_admin == 'true'">
-              <!-- Logout -->
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink to="/books/add">Agregar Libro | </RouterLink>
               <RouterLink to="/reservations">Reservaciones | </RouterLink>
               <RouterLink to="/users">Usuarios | </RouterLink>
-              <RouterLink to="/logout">Logout | </RouterLink>
+              <ion-button v-on:click="logout()">Logout | </ion-button>
             </div>
 
             <div v-if="user_admin == 'false'">
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink :to="'/reservations/'+user_id">Mis Reservas | </RouterLink>
               <RouterLink :to="'/users/edit'+user_id">Mis Reservas | </RouterLink>
-              <RouterLink to="/logout">Logout | </RouterLink>
-              <!-- Logout-->
+              <ion-button v-on:click="logout()">Logout | </ion-button>
             </div>
 
       </ion-header>

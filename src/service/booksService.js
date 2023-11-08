@@ -69,4 +69,12 @@ export default {
             throw "Error de conexion"
         }
     },
+    async getBookById (id){
+        try{
+            return await apiClient.get('/'+id);
+        } catch (error) {
+            throw `Error de conexion ${error.message}`
+        }
+        
+    }
 }

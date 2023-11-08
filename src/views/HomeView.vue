@@ -25,7 +25,7 @@ export default {
       
       try {
         const listado  = await booksService.loadData()
-        this.lista = listado.filter(i => i.avalaible_quantity > 0)
+        this.lista = listado.filter(i => i.avalaible_quantity > 0).sort((a,b) => a.title.localeCompare(b.title))
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"
@@ -93,9 +93,9 @@ export default {
               <ion-item> 
                 <ion-grid>
                   <ion-row class="headers">
-                    <ion-col>Ttile</ion-col> 
+                    <ion-col>Title</ion-col> 
                     <ion-col>Author</ion-col> 
-                    <ion-col>Actions</ion-col> 
+                    <ion-col v-if="isAdmin != null">Actions</ion-col> 
                   </ion-row>
                 </ion-grid>
               </ion-item>
@@ -105,7 +105,7 @@ export default {
                   <ion-row class="content">
                     <ion-col>{{ e.title }}</ion-col>
                     <ion-col>{{ e.author }}</ion-col>
-                    <ion-col>
+                    <ion-col v-if="isAdmin != null">
                       <div v-if="isAdmin == 'true'">
                         <ion-button @click="reservationPage(e.id)">Reservar</ion-button>
                         <ion-button @click="editBook(e.id)">Editar</ion-button>
@@ -114,6 +114,7 @@ export default {
                       <div v-if="isAdmin == 'false'">
                         <ion-button @click="reservationPage(e.id)">Reservar</ion-button>
                       </div>
+                    
                     </ion-col>
                   </ion-row>
                 </ion-grid>

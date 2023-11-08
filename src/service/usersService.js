@@ -72,4 +72,13 @@ export default {
             throw `Error de conexion ${error.message}`
         }
     },
+
+    async getUserById (id){
+        try{
+            return await apiClient.get('/'+id);
+        } catch (error) {
+            throw `Error de conexion ${error.message}`
+        }
+        
+    }
 }

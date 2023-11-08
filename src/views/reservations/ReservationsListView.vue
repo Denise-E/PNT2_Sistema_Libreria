@@ -1,17 +1,18 @@
 <script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
 import reservationsService from '../../service/reservationsService'
+import usersService from '../../service/usersService'
+import booksService from '../../service/booksService'
 
 
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
     return {
-        lista: [],
         isError: false,
         errorMessage: '',
         editar: false,
-        reservation: {}
+        reservations: [],
     }
   },
   async mounted(){
@@ -19,13 +20,28 @@ export default {
   },
   methods: {
     async loadData() {
-      
+      this.reservations = []
       try {
-        this.lista = await reservationsService.loadData()
         
+        console.log('LISTOOO: ')
+
+        const lista = await reservationsService.loadData()
+        const users = await usersService.loadData()
+        const books = await booksService.loadData()
+
+        lista.forEach(e => {
+          let client = users.find(client => client.id == e.id_client)
+          let book = books.find(book => book.id == e.id_book)
+          this.reservations.push({client: client.name, book: book.title, id: e.id})
+        }) 
+        console.log('LISTOOO: ')
+        console.log(this.reservations)
+        this.errorMessage = ''
+        this.isError = false
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"
+        console.log(e)
       }
     },
     async deleteReservation(id) {
@@ -70,11 +86,11 @@ export default {
               </ion-grid>
             </ion-item>
 
-            <ion-item v-for="e in lista" :key="e.id">
+            <ion-item v-for="e in reservations" :key="e.id">
               <ion-grid>
                 <ion-row class="content">
-                  <ion-col>{{ e.id_client }}</ion-col>
-                  <ion-col>{{ e.id_book }}</ion-col>
+                  <ion-col>{{ e.client }}</ion-col>
+                  <ion-col>{{ e.book }}</ion-col>
                   <ion-col>
                     <ion-button v-on:click="editReservation(e.id)">Editar</ion-button>
                     <ion-button v-on:click="deleteReservation(e.id)">Borrar</ion-button>

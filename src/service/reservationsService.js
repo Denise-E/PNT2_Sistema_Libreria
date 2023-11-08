@@ -20,7 +20,7 @@ export default {
     },
     async saveData(elem) {
         try {
-            
+
             await apiClient.post('/', elem);
         } catch (error) {
             throw "Error de conexion"

@@ -24,7 +24,6 @@ export default {
   methods: {
     async addReservation() {
       try {
-        
 
         await reservationsService.saveData(this.reservation)
         console.log(this.reservation)
@@ -59,6 +58,8 @@ export default {
         this.errorMessage = e
       }
     },
+    /**let exist_client =  userService.getUserById(elem.id_client)
+            let exist_book =  bookService.getBookById(elem.id_book) */
 
     async getBook() {
         const id = parseInt(this.$route.params.book_id)
