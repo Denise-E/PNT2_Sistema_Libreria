@@ -3,8 +3,3 @@ https://653062896c756603295e947b.mockapi.io/api/users
 https://65272ff5917d673fd76d7cfd.mockapi.io/api/reservations
 https://653062896c756603295e947b.mockapi.io/api/books
 
-
-Pendientes:
-
-* VALIDAR TODOS LOS POST Y PUT (campos necesarios)
-* Logout

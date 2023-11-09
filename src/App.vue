@@ -6,10 +6,10 @@ const user_admin = localStorage.getItem("user_admin")
 const user_id = localStorage.getItem("user_id")
 const user_name = localStorage.getItem("user_name")
 
+
 function logout(){
   localStorage.clear();
-  //this.$router.push({ path: '/login' })
-  window.location.reload();
+  window.location.href = "http://localhost:5173/"
 }
 
 </script>
