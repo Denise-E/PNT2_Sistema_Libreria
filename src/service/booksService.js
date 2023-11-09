@@ -41,6 +41,7 @@ export default {
         try {
             console.log(id, elem)
             const numId = parseInt(id)
+            elem.avalaible_quantity = parseInt(elem.avalaible_quantity)
             return await apiClient.put("/"+numId, elem)
         } catch (error) {
             throw "Error de conexion"

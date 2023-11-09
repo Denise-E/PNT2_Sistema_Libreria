@@ -23,19 +23,19 @@ export default {
       this.reservations = []
       try {
         
-        console.log('LISTOOO: ')
-
         const lista = await reservationsService.loadData()
         const users = await usersService.loadData()
         const books = await booksService.loadData()
+        console.log(lista)
 
         lista.forEach(e => {
           let client = users.find(client => client.id == e.id_client)
           let book = books.find(book => book.id == e.id_book)
-          this.reservations.push({client: client.name, book: book.title, id: e.id})
+          this.reservations.push({client: client.name, book: book.title, id: e.id, idBook: e.id_book})
         }) 
-        console.log('LISTOOO: ')
-        console.log(this.reservations)
+
+        console.log("RESERV", this.reservations)
+
         this.errorMessage = ''
         this.isError = false
       } catch(e) {
@@ -44,9 +44,14 @@ export default {
         console.log(e)
       }
     },
-    async deleteReservation(id) {
+    async deleteReservation(idRes, idBook) {
       try {
-        await reservationsService.deleteReservation(id)
+
+        const book = await booksService.getBookById(idBook)
+        book.data.avalaible_quantity = parseInt(book.data.avalaible_quantity) + 1
+        await booksService.updateBook(idBook, book.data)
+
+        await reservationsService.deleteReservation(idRes)
         await this.loadData()
       } catch(e) {
         this.errorMessage = `Error al borrar ${e}`
@@ -93,7 +98,7 @@ export default {
                   <ion-col>{{ e.book }}</ion-col>
                   <ion-col>
                     <ion-button v-on:click="editReservation(e.id)">Editar</ion-button>
-                    <ion-button v-on:click="deleteReservation(e.id)">Borrar</ion-button>
+                    <ion-button v-on:click="deleteReservation(e.id, e.idBook)">Borrar</ion-button>
                   </ion-col>
                 </ion-row>
               </ion-grid>

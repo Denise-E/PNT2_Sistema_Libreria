@@ -73,10 +73,11 @@ export default {
       <div v-if="editar">
            <h2>Editar libro</h2>
 
-        <ion-input v-model="this.book.title" label='title' type='text' ></ion-input>
-        <ion-input v-model="this.book.author" label='author' type='text'></ion-input>
-        <ion-input v-model="this.book.avalaible_quantity" label='quantity' type='number'></ion-input>
-        <ion-button @click="saveChanges(this.book.id)">Guardar cambios</ion-button>
+          <ion-input v-model="this.book.title" label='title' type='text' required></ion-input>
+          <ion-input v-model="this.book.author" label='author' type='text' required></ion-input>
+          <ion-input v-model="this.book.avalaible_quantity" label='quantity' type='number' required></ion-input>
+          <ion-button @click="saveChanges(this.book.id)">Guardar cambios</ion-button>
+        
       
       </div>
 

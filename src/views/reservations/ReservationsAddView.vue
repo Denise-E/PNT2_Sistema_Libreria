@@ -24,9 +24,16 @@ export default {
   methods: {
     async addReservation() {
       try {
+        this.reservation.id_book = this.book.id
+
+        //const book = await booksService.getBookById(this.book.id)
+        //book.data.avalaible_quantity = parseInt(book.data.avalaible_quantity) - 1
+        //await booksService.updateBook(this.book.id, book.data)
+
 
         await reservationsService.saveData(this.reservation)
-        console.log(this.reservation)
+
+      
         await booksService.updateBookAvailability(this.reservation.id_book)
 
         this.$router.push({ path: '/' }).catch(err => {});
@@ -42,7 +49,6 @@ export default {
     async tryReservation () {
       try {
         
-
         const res = await usersService.loadData()
 
         const user = res.find(r => r.email == this.userEmail )
@@ -58,12 +64,11 @@ export default {
         this.errorMessage = e
       }
     },
-    /**let exist_client =  userService.getUserById(elem.id_client)
-            let exist_book =  bookService.getBookById(elem.id_book) */
 
     async getBook() {
         const id = parseInt(this.$route.params.book_id)
-        this.book = await booksService.getBookById(id)
+        const book = await booksService.getBookById(id)
+        this.book = book.data
     },
     logedUser(){
       this.isAdmin = localStorage.getItem("user_admin")
@@ -85,12 +90,11 @@ export default {
 
         <div v-if="isAdmin == 'true'">
            <ion-input v-model="userEmail" label='Email del cliente: ' type='email'></ion-input>
-           <ion-input v-model="reservation.id_book" type='text' value="{{ book.id }}" style="display:none;" ></ion-input>
           <ion-button @click="tryReservation()">Generar Reserva</ion-button>
         </div>
 
         <div v-else>
-          <ion-input v-model="reservation.id_book" type='text' value="{{ book.id }}" style="display:none;" ></ion-input>
+          
           <ion-button @click="addReservation()">Confirmar Reserva</ion-button>
         </div>
         <p style="color: red; font-weight:bold"> {{errorMessage}}</p>

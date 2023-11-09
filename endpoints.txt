@@ -6,6 +6,5 @@ https://653062896c756603295e947b.mockapi.io/api/books
 
 Pendientes:
 
-
-* CSS
 * VALIDAR TODOS LOS POST Y PUT (campos necesarios)
+* Logout

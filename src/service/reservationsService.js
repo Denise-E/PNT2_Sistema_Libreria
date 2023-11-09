@@ -28,6 +28,7 @@ export default {
     },
     async deleteReservation(id) {
         try {
+
             await apiClient.delete("/"+id)
         } catch (error) {
             throw "Error de conexion"

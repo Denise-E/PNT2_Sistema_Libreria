@@ -17,7 +17,8 @@ export default {
   methods: {
     async loadData() {
       try {
-        this.users = await usersService.loadData()
+        let users = await usersService.loadData()
+        this.users = users.sort((a,b) => a.name.localeCompare(b.name))
       } catch(e) {
         this.isError = true;
         this.errorMessage = "No se pueden cargar los datos en este momento"

@@ -1,40 +1,70 @@
 <script>
 import {IonPage,IonContent,IonList,IonInput,IonButton} from '@ionic/vue'
 import reservationsService from '../../service/reservationsService'
+import booksService from '../../service/booksService'
+
 
 export default {
   components: {IonPage, IonContent, IonList, IonInput, IonButton},
   data() {
     return {
-        reservation: {},
         isError: false,
         errorMessage: '',
-        book: {}
+        editar: false,
+        reservations: [],
+        noReservations: false
     }
   },
-  mounted(){
-    this.getBook()
+  async mounted(){
+    await this.loadData()
   },
   methods: {
-    async addReservation() {
+    async loadData() {
+      this.reservations = []
       try {
         
+        let lista_no_filter = await reservationsService.loadData()
+        let lista = lista_no_filter.filter(b => b.id_client == this.$route.params.id)
+        const books = await booksService.loadData()
+        console.log(lista)
 
-        await reservationsService.saveData(this.reservation)
-        this.$router.push({ path: '/' }).catch(err => {});
 
-        setTimeout(() => {
-            this.$router.go(0);
-        }, 1);
 
+        if(lista.length <= 0 || lista == undefined) {
+          this.noReservations = true
+        }else{
+            this.noReservations = false
+            lista.forEach(e => {
+            let book = books.find(book => book.id == e.id_book)
+            this.reservations.push(book.title)
+          })
+        }
+
+
+        this.errorMessage = ''
+        this.isError = false
       } catch(e) {
-        this.errorMessage = e
+        this.isError = true;
+        this.errorMessage = "No se pueden cargar los datos en este momento"
+        console.log(e)
+      }
+    },
+    async deleteReservation(idRes, idBook) {
+      try {
+
+        const book = await booksService.getBookById(idBook)
+        book.data.avalaible_quantity = parseInt(book.data.avalaible_quantity) + 1
+        await booksService.updateBook(idBook, book.data)
+
+        await reservationsService.deleteReservation(idRes)
+        await this.loadData()
+      } catch(e) {
+        this.errorMessage = `Error al borrar ${e}`
       }
     },
 
-    async getBook() {
-        const id = parseInt(this.$route.params.book_id)
-        this.book = await booksService.getBookById(id)
+    editReservation(id){
+        this.$router.push('/reservations/edit/'+id)
     }
 
   }
@@ -42,10 +72,57 @@ export default {
 </script>
 
 <template>
-    <ion-page>
     
-    <ion-content>
-        <h1>HOLA</h1>
+  <ion-page>
+    
+    <ion-content class="ion-text-center">
+
+          <h2>Reservas: </h2>
+
+          <div v-if="isError">
+              {{ errorMessage }}
+          </div>
+          <div v-if="noReservations">
+              <p>Aún no tiene reservaciones</p>
+          </div>
+
+          <ion-list>
+            
+            <ion-item v-if="!noReservations"> 
+              <ion-grid>
+                <ion-row class="headers">
+                  
+                  <ion-col >Book Name</ion-col> 
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <ion-item v-for="e in reservations" :key="e.id">
+              <ion-grid>
+                <ion-row class="content">
+                  <ion-col>{{ e }}</ion-col>
+   
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          
+      </ion-list>
+
     </ion-content>
   </ion-page>
 </template>
+
+<style>
+
+.headers{
+  font-size: large;
+  font-weight: 600;
+  text-align: center;
+}
+
+.content{
+  text-align: center;
+}
+
+
+</style>
