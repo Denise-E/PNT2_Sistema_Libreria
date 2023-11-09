@@ -57,7 +57,7 @@ export default {
           this.reservation.id_client = user.id
           this.addReservation()
         }else{
-          this.errorMessage = 'No se encontro ningun usuario con ese mail'
+          this.errorMessage = 'No se encontro ningun usuario con ese mail.'
         }
 
       } catch(e) {
