@@ -81,10 +81,10 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     <ion-content>
 
-        <h2>Agregar Reserva: </h2>
+        <h2>Agregar Reserva </h2>
 
         <h4>Libro: {{ book.title }}</h4>
 
@@ -102,3 +102,10 @@ export default {
     </ion-content>
   </ion-page>
 </template>
+
+<style>
+
+#page {
+  margin-left: 3rem;
+}
+</style>

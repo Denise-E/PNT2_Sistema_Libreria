@@ -46,17 +46,24 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     <ion-content>
 
-        <h2>Edicion: </h2>
+        <h2>Edición de usuario </h2>
 
-        <ion-input v-model="this.user.name" label='nombre' type='text'></ion-input>
-        <ion-input v-model="this.user.email" label='email' type='text'></ion-input>
-        <ion-input v-model="this.user.password" label='password' type='text'></ion-input>
+        <ion-input v-model="this.user.name" label='Nombre:' type='text'></ion-input>
+        <ion-input v-model="this.user.email" label='Mail:' type='text'></ion-input>
+        <ion-input v-model="this.user.password" label='Contraseña:' type='text'></ion-input>
         <ion-button @click="saveChanges()">Guardar</ion-button>
         <p style="color: red; font-weight:bold"> {{errorMessage}}</p>
 
     </ion-content>
   </ion-page>
 </template>
+
+
+<style >
+ #page {
+  margin-left: 3rem;
+ }
+</style>

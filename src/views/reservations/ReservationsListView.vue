@@ -68,7 +68,7 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     
     <ion-content class="ion-text-center">
 
@@ -120,6 +120,10 @@ export default {
 
 .content{
   text-align: center;
+}
+
+#page{
+  margin-top: 5rem;
 }
 
 

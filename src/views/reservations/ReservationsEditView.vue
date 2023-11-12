@@ -46,7 +46,7 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     <ion-content>
 
         <h2>Edicion: </h2>
@@ -59,3 +59,8 @@ export default {
     </ion-content>
   </ion-page>
 </template>
+
+
+<style>
+
+</style>

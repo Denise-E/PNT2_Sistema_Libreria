@@ -32,16 +32,23 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     <ion-content>
 
         <h2>Nuevo libro</h2>
 
-        <ion-input v-model="book.title" label='title' type='text' required></ion-input>
-        <ion-input v-model="book.author" label='author' type='text' required></ion-input>
-        <ion-input v-model="book.avalaible_quantity" label='quantity' type='number' required></ion-input>
+        <ion-input v-model="book.title" label='Titulo:' type='text' required></ion-input>
+        <ion-input v-model="book.author" label='Autor:' type='text' required></ion-input>
+        <ion-input v-model="book.avalaible_quantity" label='Cantidad:' type='number' required></ion-input>
         <ion-button @click="addBook()">Agregar</ion-button>
 
     </ion-content>
   </ion-page>
 </template>
+
+
+<style >
+#page{
+  margin-left: 5rem;
+}
+</style>

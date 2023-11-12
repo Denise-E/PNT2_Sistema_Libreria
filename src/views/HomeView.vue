@@ -66,16 +66,16 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     
     <ion-content class="ion-text-center">
 
-      <div v-if="editar">
+      <div v-if="editar" id="edit_page">
            <h2>Editar libro</h2>
 
-          <ion-input v-model="this.book.title" label='title' type='text' required></ion-input>
-          <ion-input v-model="this.book.author" label='author' type='text' required></ion-input>
-          <ion-input v-model="this.book.avalaible_quantity" label='quantity' type='number' required></ion-input>
+          <ion-input v-model="this.book.title" label='Tiulo:' type='text' required></ion-input>
+          <ion-input v-model="this.book.author" label='Autor:' type='text' required></ion-input>
+          <ion-input v-model="this.book.avalaible_quantity" label='Cantidad:' type='number' required></ion-input>
           <ion-button @click="saveChanges(this.book.id)">Guardar cambios</ion-button>
         
       
@@ -141,6 +141,9 @@ export default {
   text-align: center;
 }
 
+#page{
+  margin-top: 5rem;
+}
 
 
 

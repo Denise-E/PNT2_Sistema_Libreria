@@ -17,31 +17,34 @@ function logout(){
 <template>
 
     <ion-app class="wrapper">
-      <ion-header>            
+      <ion-header id="header">            
 
-            <div v-if="user_admin == null">
+            <div v-if="user_admin == null" class="nav">
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink to="/login">Log in | </RouterLink>
-              <RouterLink to="/register">Register | </RouterLink>
+              <RouterLink to="/register">Register</RouterLink>
             </div>
 
-            <div v-if="user_admin == 'true'">
+            <div v-if="user_admin == 'true'" class="nav">
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink to="/books/add">Agregar Libro | </RouterLink>
               <RouterLink to="/reservations">Reservaciones | </RouterLink>
               <RouterLink to="/users">Usuarios | </RouterLink>
-              <ion-button v-on:click="logout()">Logout | </ion-button>
+              <ion-button v-on:click="logout()">Logout</ion-button>
             </div>
 
-            <div v-if="user_admin == 'false'">
+            <div v-if="user_admin == 'false'" class="nav">
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink :to="'/reservations/'+user_id">Mis Reservas | </RouterLink>
-              <ion-button v-on:click="logout()">Logout | </ion-button>
+              <ion-button v-on:click="logout()">Logout</ion-button>
             </div>
 
       </ion-header>
-      <HomeViewVue />
-      <RouterView />
+      <div class="main">
+        <HomeViewVue />
+        <RouterView />
+      </div>
+      
     </ion-app>
 
 </template>
@@ -64,6 +67,10 @@ nav {
   margin-top: 2rem;
 }
 
+.nav {
+  padding: .5rem;
+}
+
 nav a.router-link-exact-active {
   color: var(--color-text);
 }
@@ -80,6 +87,11 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+#header {
+  background-color: #fff;
+  margin-bottom: 3rem;
 }
 
 @media (min-width: 1024px) {
