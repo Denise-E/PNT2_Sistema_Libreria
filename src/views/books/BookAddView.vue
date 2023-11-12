@@ -39,7 +39,7 @@ export default {
 
         <ion-input v-model="book.title" label='Titulo:' type='text' required></ion-input>
         <ion-input v-model="book.author" label='Autor:' type='text' required></ion-input>
-        <ion-input v-model="book.avalaible_quantity" label='Cantidad:' type='number' required></ion-input>
+        <ion-input v-model="book.avalaible_quantity" label='Cantidad:' type='number' min="1" required></ion-input>
         <ion-button @click="addBook()">Agregar</ion-button>
 
     </ion-content>

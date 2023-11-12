@@ -75,7 +75,7 @@ export default {
 
           <ion-input v-model="this.book.title" label='Tiulo:' type='text' required></ion-input>
           <ion-input v-model="this.book.author" label='Autor:' type='text' required></ion-input>
-          <ion-input v-model="this.book.avalaible_quantity" label='Cantidad:' type='number' required></ion-input>
+          <ion-input v-model="this.book.avalaible_quantity" label='Cantidad:' type='number' min="1" required></ion-input>
           <ion-button @click="saveChanges(this.book.id)">Guardar cambios</ion-button>
         
       

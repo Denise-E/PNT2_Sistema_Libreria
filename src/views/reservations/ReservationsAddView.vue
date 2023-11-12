@@ -26,15 +26,18 @@ export default {
       try {
         this.reservation.id_book = this.book.id
 
-        //const book = await booksService.getBookById(this.book.id)
-        //book.data.avalaible_quantity = parseInt(book.data.avalaible_quantity) - 1
-        //await booksService.updateBook(this.book.id, book.data)
+        const book = await booksService.getBookById(this.book.id)
+        book.data.avalaible_quantity = parseInt(book.data.avalaible_quantity) - 1
+        await booksService.updateBook(this.book.id, book.data)
 
+        if(this.reservation.id_client == undefined) {
+          this.reservation.id_client = this.userId
+        }
 
         await reservationsService.saveData(this.reservation)
 
       
-        await booksService.updateBookAvailability(this.reservation.id_book)
+        //await booksService.updateBookAvailability(this.reservation.id_book)
 
         this.$router.push({ path: '/' }).catch(err => {});
 

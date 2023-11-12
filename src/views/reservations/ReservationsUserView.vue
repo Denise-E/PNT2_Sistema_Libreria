@@ -24,7 +24,8 @@ export default {
       try {
         
         let lista_no_filter = await reservationsService.loadData()
-        let lista = lista_no_filter.filter(b => b.id_client == this.$route.params.id)
+
+        let lista = lista_no_filter.filter(b => b.id_client == this.$route.params.user_id)
         const books = await booksService.loadData()
         console.log(lista)
 
@@ -73,7 +74,7 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     
     <ion-content class="ion-text-center">
 

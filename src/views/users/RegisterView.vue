@@ -32,7 +32,7 @@ export default {
 
 <template>
     
-  <ion-page>
+  <ion-page id="page">
     <ion-content>
 
         <h2>Bienvenido! Registrate: </h2>
@@ -45,3 +45,10 @@ export default {
     </ion-content>
   </ion-page>
 </template>
+
+
+<style >
+#page{
+  margin-left: 3rem;
+}
+</style>

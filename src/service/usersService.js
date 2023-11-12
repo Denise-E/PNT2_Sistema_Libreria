@@ -80,5 +80,19 @@ export default {
             throw `Error de conexion ${error.message}`
         }
         
+    }, 
+
+    async getIdUserByEmail (email){
+        try{
+            const users = await apiClient.get('/');
+
+            const user_by_email = users.data.find(u => email == u.email)
+
+            return user_by_email.id
+
+        } catch (error) {
+            throw `Error de conexion ${error.message}`
+        }
+        
     }
 }
