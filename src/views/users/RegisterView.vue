@@ -35,7 +35,7 @@ export default {
   <ion-page id="page">
     <ion-content>
 
-        <h2>Bienvenido! Registrate: </h2>
+        <h2>Bienvenido! Registrate </h2>
 
         <ion-input v-model="user.name" label='nombre' type='text'></ion-input>
         <ion-input v-model="user.email" label='email' type='text'></ion-input>

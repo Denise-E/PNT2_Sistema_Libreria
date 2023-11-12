@@ -78,7 +78,7 @@ export default {
     
     <ion-content class="ion-text-center">
 
-          <h2>Reservas: </h2>
+          <h2>Reservas </h2>
 
           <div v-if="isError">
               {{ errorMessage }}

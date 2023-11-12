@@ -69,7 +69,7 @@ export default {
   <ion-page id="page">
     <ion-content>
 
-        <h2>Edicion: </h2>
+        <h2>Edicion </h2>
         <ion-input v-model="this.reservation.id" label='id' type='text' style="display: none;"></ion-input>
         <ion-input v-model="this.client_email" label='Cliente: ' type='text'></ion-input>
         <ion-input v-model="this.reservation.id_book" label='book' type='text' style="display: none"></ion-input>
