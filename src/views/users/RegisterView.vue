@@ -37,9 +37,9 @@ export default {
 
         <h2>Bienvenido! Registrate </h2>
 
-        <ion-input v-model="user.name" label='nombre' type='text'></ion-input>
-        <ion-input v-model="user.email" label='email' type='text'></ion-input>
-        <ion-input v-model="user.password" label='password' type='text'></ion-input>
+        <ion-input v-model="user.name" label='Nombre:' type='text'></ion-input>
+        <ion-input v-model="user.email" label='Mail:' type='text'></ion-input>
+        <ion-input v-model="user.password" label='Contraseña:' type='text'></ion-input>
         <ion-button @click="addUser()">Registrate</ion-button>
 
     </ion-content>

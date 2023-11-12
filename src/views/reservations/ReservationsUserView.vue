@@ -93,7 +93,7 @@ export default {
               <ion-grid>
                 <ion-row class="headers">
                   
-                  <ion-col >Book Name</ion-col> 
+                  <ion-col>Libros</ion-col> 
                 </ion-row>
               </ion-grid>
             </ion-item>

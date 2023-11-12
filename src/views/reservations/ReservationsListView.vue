@@ -84,9 +84,9 @@ export default {
               <ion-grid>
                 <ion-row class="headers">
                   
-                  <ion-col>Cliente Name</ion-col> 
-                  <ion-col>Book Name</ion-col> 
-                  <ion-col>Actions</ion-col>
+                  <ion-col>Cliente</ion-col> 
+                  <ion-col>Libro</ion-col> 
+                  <ion-col>Acciones</ion-col>
                 </ion-row>
               </ion-grid>
             </ion-item>

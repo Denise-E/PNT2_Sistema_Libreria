@@ -56,9 +56,9 @@ export default {
             <ion-item>
               <ion-grid>
                 <ion-row class="headers">
-                  <ion-col>User Name</ion-col> <!-- Ajusta el tamaño según tu preferencia -->
-                  <ion-col>User Email</ion-col>
-                  <ion-col>Actions</ion-col> <!-- Ajusta el tamaño según tu preferencia -->
+                  <ion-col>Nombre</ion-col> 
+                  <ion-col>Mail</ion-col>
+                  <ion-col>Acciones</ion-col> 
                 </ion-row>
               </ion-grid>
             </ion-item>

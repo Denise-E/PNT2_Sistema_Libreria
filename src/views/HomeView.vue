@@ -94,9 +94,9 @@ export default {
               <ion-item> 
                 <ion-grid>
                   <ion-row class="headers">
-                    <ion-col>Title</ion-col> 
-                    <ion-col>Author</ion-col> 
-                    <ion-col v-if="isAdmin != null">Actions</ion-col> 
+                    <ion-col>Titulo</ion-col> 
+                    <ion-col>Autor</ion-col> 
+                    <ion-col v-if="isAdmin != null">Acciones</ion-col> 
                   </ion-row>
                 </ion-grid>
               </ion-item>
@@ -143,6 +143,11 @@ export default {
 
 #page{
   margin-top: 5rem;
+}
+
+#edit_page{
+  text-align: left;
+  margin-left: 3rem;
 }
 
 

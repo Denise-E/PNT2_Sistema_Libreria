@@ -50,8 +50,8 @@ export default {
 
         <h2>Bienvenido! </h2>
 
-        <ion-input v-model="user.email" label='email' type='text'></ion-input>
-        <ion-input v-model="user.password" label='password' type='password'></ion-input>
+        <ion-input v-model="user.email" label='Mail:' type='text'></ion-input>
+        <ion-input v-model="user.password" label='Contraseña:' type='password'></ion-input>
         <ion-button @click="login()">Ingresar</ion-button>
         <p style="color: red; font-weight:bold"> {{errorMessage}}</p>
 

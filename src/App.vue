@@ -29,14 +29,14 @@ function logout(){
               <RouterLink to="/">Home | </RouterLink>
               <RouterLink to="/books/add">Agregar Libro | </RouterLink>
               <RouterLink to="/reservations">Reservaciones | </RouterLink>
-              <RouterLink to="/users">Usuarios | </RouterLink>
-              <ion-button v-on:click="logout()">Logout</ion-button>
+              <RouterLink to="/users">Usuarios </RouterLink>
+              <ion-button v-on:click="logout()" class="logout">Logout</ion-button>
             </div>
 
             <div v-if="user_admin == 'false'" class="nav">
               <RouterLink to="/">Home | </RouterLink>
-              <RouterLink :to="'/reservations/'+user_id">Mis Reservas | </RouterLink>
-              <ion-button v-on:click="logout()">Logout</ion-button>
+              <RouterLink :to="'/reservations/'+user_id">Mis Reservas</RouterLink>
+              <ion-button v-on:click="logout()" class="logout">Logout</ion-button>
             </div>
 
       </ion-header>
@@ -92,6 +92,10 @@ nav a:first-of-type {
 #header {
   background-color: #fff;
   margin-bottom: 3rem;
+}
+
+.logout {
+  margin-left: 60%;
 }
 
 @media (min-width: 1024px) {
