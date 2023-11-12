@@ -35,7 +35,8 @@ function logout(){
 
             <div v-if="user_admin == 'false'" class="nav">
               <RouterLink to="/">Home | </RouterLink>
-              <RouterLink :to="'/reservations/'+user_id">Mis Reservas</RouterLink>
+              <RouterLink :to="'/reservations/'+user_id">Mis Reservas |</RouterLink>
+              <RouterLink :to="'/user/edit/'+user_id">Mi Perfil</RouterLink>
               <ion-button v-on:click="logout()" class="logout">Logout</ion-button>
             </div>
 
